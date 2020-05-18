@@ -1,0 +1,13 @@
+body {
+	display: flex;
+	align-content: stretch;
+}
+body > div {
+	width: 100%;
+	height: calc(100vh - 100px);
+	padding: 10px;
+}
+#txtOracle, #txtEclipse {
+	width: 100%;
+	height: 100%;
+}
