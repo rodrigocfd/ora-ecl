@@ -15,6 +15,8 @@ function toEclipse(src, dest) {
 			? `String sql = "${li}"`
 			: `+ " ${li}"`;
 	}).join('\n') + ';';
+	dest.select();
+	dest.focus();
 }
 
 function toOracle(src, dest) {
@@ -24,4 +26,6 @@ function toOracle(src, dest) {
 			.replace(/^\s+\+ \"/, '')
 			.replace(/";?$/, '')
 	}).join('\n');
+	dest.select();
+	dest.focus();
 }
