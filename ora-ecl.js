@@ -10,13 +10,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function toEclipse(src, dest) {
 	dest.value = src.value.split('\n').map((line, i) => {
+		const li = line.replace('siorg.', '{h-schema}');
 		return i == 0
-			? `String sql = \"${line}\"`
-			: `+ \" ${line}\"`;
+			? `String sql = "${li}"`
+			: `+ " ${li}"`;
 	}).join('\n') + ';';
 }
 
 function toOracle(src, dest) {
-	const txt = src.value;
-	console.log(txt)
+	dest.value = src.value.split('\n').map((line, i) => {
+		return line.replace('String sql = "', '')
+			.replace('{h-schema}', 'siorg.')
+			.replace(/^\s+\+ \"/, '')
+			.replace(/";?$/, '')
+	}).join('\n');
 }
